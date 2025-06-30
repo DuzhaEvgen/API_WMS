@@ -1,18 +1,6 @@
-Наименование|Тип|R|Ограничение
+Стовбець|Тип даних|Обов'язкове поле|Коментар
 ---|---|---|---
-document_id|varchar(72)|+|
-document_document_type_id|varchar(72)|+|document_type
-document_document_mail_id|varchar(72)|-|document_mail_id
-document_title|varchar(255)|+|
-document_comment|varchar(255)|-|
-document_document_legal_person_id|varchar(72)|+|document_legal_person
-document_warehouse_id|varchar(72)|+|warehouse
-document_warehouse_id_from|varchar(72)|-|warehouse
-document_warehouse_id_to|varchar(72)|-|warehouse
-document_zone_id_from|varchar(72)|-|zone
-document_zone_id_to|varchar(72)|-|zone
-document_counterparty_id_from|varchar(72)|-|counterparty
-document_counterparty_id_to|varchar(72)|-|counterparty
-document_user_id|varchar(72)|-|user
-items|array(document_det)|+|
-v_document_counterparty|object(counterparty)|+|
+product_legal_person_id	|varchar(72)|	Так	|Індентифікатор контрагента|
+product_legal_person_title|	varchar(255)	|Ні	|Назва контрагента|
+product_legal_person_tc|	timestamp|	Так	|
+product_legal_person_tm	|timestamp	|Ні	|
