@@ -38,26 +38,32 @@
 ```
 
    Також можлива відповідь інформаційним повідомленням із ключем `message`, яке всередині містить опис і інформує про успішну обробку запиту:
-
+  ```json
    {
      "message": "You have successfully updated"
    }
+```
 
-##Автентифікація
+Автентифікація
    -  METHOD: POST 
    -  HOST APP: https://wms-ik-test.srv.mhp.com.ua
 
-    -  PATH: /login/
+    - PATH: /login/
     - BODY: auth-body
-    -  Приклад - https://wms-ik-test.srv.mhp.com.ua/login/
- ```json{
+    - Приклад - https://wms-ik-test.srv.mhp.com.ua/login/
+ ```json
+{
 "login": "User",
 "password": "PASSW",
 "api": true
 }
 ```
-RESPONSE: auth-success
+- RESPONSE: `auth-success`
+```json
 {"login":"EXT-LOGIN-01","session":"n2fol9cm5vdgbk57f8jnka1n8i"}
+```
+
+
 Сесійний ідентифікатор застосовується в REQUEST->RESPONSE запитах для наділення користувача належними правами.
 
 Для подальших запитів необхідно вказувати в параметрах заголовка /?session_key =’’RESPONSE.session’’
