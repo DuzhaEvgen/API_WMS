@@ -1,7 +1,7 @@
 ##Обмін даними
 
 ##Глосарій
-
+         
     *WMS - Система управління складом
     *ERP - Система планування ресурсів підприємства
     *Імпорт - процес передачі даних у систему WMS
@@ -20,25 +20,25 @@
       
 Приклад помилки:
 
-{
-  "error": "In the content so much free quantity does not exist."
-}
+   {
+     "error": "In the content so much free quantity does not exist."
+   }
 
-Приклад помилки з параметрами:
+   Приклад помилки з параметрами:
 
-{
-  "error": {
-    "text": "Path not found (:var)",
-    "prepare": {
-      "var": "/dsada"
-    }
-  }
-}
-Також можлива відповідь інформаційним повідомленням із ключем message, яке всередині містить опис і інформує про успішну обробку запиту:
+   {
+     "error": {
+       "text": "Path not found (:var)",
+       "prepare": {
+         "var": "/dsada"
+       }
+     }
+   }
+   Також можлива відповідь інформаційним повідомленням із ключем message, яке всередині містить опис і інформує про успішну обробку запиту:
 
-{
-  "message": "You have successfully updated"
-}
+   {
+     "message": "You have successfully updated"
+   }
 
 -Автентифікація
     • METHOD: POST 
