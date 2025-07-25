@@ -19,7 +19,7 @@
  Додаток у будь-який момент може відповісти повідомленням із ключем `error` і описом всередині.
 
 >Помилки, яким не присвоєно описового тексту, 
->зазвичай повертаються з текстом за замовчуванням Server critical exception
+>зазвичай повертаються з текстом за замовчуванням `Server critical exception`
       
 Приклад помилки:
 ```json
@@ -49,8 +49,8 @@
 ```
 
 ## Автентифікація
->- METHOD: POST 
->- HOST APP: https://wms.com.ua
+- METHOD: POST 
+- HOST APP: https://wms.com.ua
 
 - PATH: /login/
 - BODY: auth-body
@@ -78,30 +78,31 @@
 ## Оновлення довідників (CUD)
 
 Загальний маршрут для оновлення довідників виглядає так: /unit/@TABLE/@METHOD/
-    • @TABLE - Таблиця/довідник, який необхідний
-        ◦ product - Товар
-        ◦ product_brand - Бренд товару
-        ◦ product_group - Група товару
-        ◦ product_kind_of - Вид товару
-        ◦ product_type - Тип товару
-        ◦ product_barcode - ШК товару
-        ◦ product_category - Категорії товару
-    • 
-    • @METHOD - Дія над цим довідником
-        ◦ cu - Операція створення або зміни
-        ◦ d - Операція видалення
+
+• @TABLE - Таблиця/довідник, який необхідний
+- product - Товар
+- product_brand - Бренд товару
+- product_group - Група товару
+- product_kind_of - Вид товару
+- product_type - Тип товару
+- product_barcode - ШК товару
+- product_category - Категорії товару
+ 
+• @METHOD - Дія над цим довідником
+- cu - Операція створення або зміни;
+- d - Операція видалення;
 
 
 
 Наприклад, для того щоб оновити або додати дані, потрібно вказати маршрут:
-    • у довідник продуктів  -  /unit/product/cu/
-    • у довідник брендів  -  /unit/product_brand/cu/
-    • у довідник груп  - /unit/product_group/cu/
-    • у довідник видів  - /unit/product_kind_of/cu/
-    • у довідник типів  - /unit/product_type/cu/
-    • у довідник ШК  -  /unit/product_barcode/cu/
-    • у довідник категорій  -  /unit/product_category/cu/
-    • у довідник упаковок  -   /unit/product_pack/cu/
+- у довідник продуктів  -  /unit/product/cu/
+- у довідник брендів  -  /unit/product_brand/cu/
+- у довідник груп  - /unit/product_group/cu/
+-  у довідник видів  - /unit/product_kind_of/cu/
+- у довідник типів  - /unit/product_type/cu/
+- у довідник ШК  -  /unit/product_barcode/cu/
+- у довідник категорій  -  /unit/product_category/cu/
+- у довідник упаковок  -   /unit/product_pack/cu/
 
 
 Загальний підхід до операцій оновлення або створення
@@ -117,13 +118,13 @@
 ```json
 {
   "product_id": "0011405b-6787-44d3-807f-19d2dbfd071a",
-  "product_title": "Шоколад чорний Nut з мигдалем пакет пластиковий 90г Roshen",
-  "product_full_name": "Шоколад чорний Nut з мигдалем пакет пластиковий 90г Roshen",
-  "product_art": "ПМ36441",
-  "product_product_brand_id": "511a89bf-e23d-11ef-8b7d-005056acf860",
-  "product_product_kind_of_id": "e583b727-be76-11ed-988b-00505691a3b3",
-  "product_product_group_id": "2",
-  "product_product_category_id": "2",
+  "product_title": "Name product",
+  "product_full_name": "Full name produc",
+  "product_art": "0000001",
+  "product_product_brand_id": "511a89bf",
+  "product_product_kind_of_id": "e23d-11ef",
+  "product_product_group_id": "-8b7d-0050",
+  "product_product_category_id": "-56acf860",
   "product_product_type_id": "1",
   "product_product_unit_id": "222",
   "product_x": "10",
@@ -147,8 +148,28 @@
 
 -Але для того щоб створити товар спочатку потрібно заповнити такі дані в системі
 
+Стовбець product_product_brand_id пов’язаний з таблицею :
+product_brand
+|Стовпець|Тип даних|Обов’язковий|Коментар|
+|----------------------------- |----------------------------- |----------------------------- |----------------------------- |
+|product_brand_id|varchar(72)|Nfr|Індентифікатор Бренду товару|
+|product_brand_title|varchar(255)|Nfr|Найменування бренду|
+|product_brand_tc|timestamp|Ні|Встановлюється автоматично|
+|product_brand_tm|timestamp|Ні|Встановлюється автоматично|
 
-Стовбець product_product_product_type_id  пов’язаний з таблицею
+
+Стовбець product_product_group_id пов’язаний з таблицею
+product_group
+|Стовпець|Тип даних|Обов’язковий|Коментар|
+|----------------------------- |----------------------------- |----------------------------- |----------------------------- |
+|product_group_id|varchar(72)|Так|Індентифікатор Групи товару|
+|product_group_title|varchar(255)|Так||
+|product_group_package_title|varchar(255)|Так||
+|product_group_tc|timestamp|Ні|Встановлюється автоматично|
+|product_group_tm|timestamp|Ні|Встановлюється автоматично|
+
+
+Стовбець product_product_type_id  пов’язаний з таблицею
 product_type
 |Стовпець|Тип даних|Обов’язковий|Коментар|
 |----------------------------- |----------------------------- |----------------------------- |----------------------------- |
@@ -158,15 +179,7 @@ product_type
 |product_type_tc|timestamp|Ні|Встановлюється автоматично|
 |product_type_tm|timestamp|Ні|Встановлюється автоматично|
 
-Стовбець product_product_product_group_id пов’язаний з таблицею
-product_group
-|Стовпець|Тип даних|Обов’язковий|Коментар|
-|----------------------------- |----------------------------- |----------------------------- |----------------------------- |
-|product_group_id|varchar(72)|NO|Індентифікатор Групи товару|
-|product_group_title|varchar(255)|YES||
-|product_group_package_title|varchar(255)|YES||
-|product_group_tc|timestamp|NO|Встановлюється автоматично|
-|product_group_tm|timestamp|YES|Встановлюється автоматично|
+
 
 
 Стовбець product_product_brand_id пов’язаний з таблицею :
